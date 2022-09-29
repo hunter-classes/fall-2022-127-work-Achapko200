@@ -1,13 +1,20 @@
 def piglatinify(word):
     
     first = word[0]
-    if first in 'aeiou':
+    if first in 'aeiouAEIOU':
         result = word + 'ay'
     else:
         # move first letter to end and add 'ay'
-        result = word[1:]+first+'ay'
+        # check to see if it's upper case
+        if first == first.upper():
+            result = word[1:].capitalize()+first.lower()+'ay'
+        else:
+            result = word[1:]+first+'ay'
     
     return result
+
+
+# Testing
 test_word = "hello"
 result = piglatinify(test_word)
 print(test_word," -> ",result)
